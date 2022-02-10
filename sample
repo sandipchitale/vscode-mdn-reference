@@ -1,0 +1,1 @@
+'In combination with 'float' and 'position', determines the type of box or boxes that are generated for an element\\.\n\nSyntax: \\[ &lt;display\\-outside&gt; || &lt;display\\-inside&gt; \\] | &lt;display\\-listitem&gt; | &lt;display\\-internal&gt; | &lt;display\\-box&gt; | &lt;display\\-legacy&gt;\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/CSS/display)'
