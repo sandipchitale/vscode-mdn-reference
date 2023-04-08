@@ -1,0 +1,102 @@
+{
+    "name": "vscode-mdn-reference",
+    "displayName": "Show MDN reference for thing at caret in CSS, SCSS and HTML file editors.",
+    "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#341114",
+        "theme": "dark"
+    },
+    "description": "VS Code extention to show MDN reference for thing at caret in CSS, SCSS and HTML file editors.",
+    "version": "1.0.3",
+    "license": "SEE LICENSE IN LICENSE",
+    "publisher": "sandipchitale",
+    "author": {
+        "name": "Sandip Chitale"
+    },
+    "maintainers": [
+        "Sandip Chitale <sandipchitale@gmail.com>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sandipchitale/vscode-mdn-reference"
+    },
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:css",
+        "onLanguage:scss",
+        "onLanguage:html"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "configuration": {
+            "properties": {
+                "vscode-mdn-reference.openInExternalBrowser": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Open MDN Reference in deaktop browser."
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "vscode-mdn-reference.show-mdn-reference",
+                "title": "Show MDN Reference",
+                "enablement": "editorLangId == css || editorLangId == scss || editorLangId == html"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "vscode-mdn-reference.show-mdn-reference",
+                    "when": "editorLangId == css || editorLangId == scss || editorLangId == html"
+                }
+            ],
+            "editor/context": [
+                {
+                    "command": "vscode-mdn-reference.show-mdn-reference",
+                    "when": "editorTextFocus && ( editorLangId == css || editorLangId == scss || editorLangId == html )",
+                    "group": "navigation@100"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "command": "vscode-mdn-reference.show-mdn-reference",
+                "key": "ctrl+f1",
+                "mac": "cmd+f1",
+                "when": "editorTextFocus"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.14",
+        "@types/glob": "^7.1.4",
+        "@types/mocha": "^9.0.0",
+        "@types/node": "14.x",
+        "@types/vscode": "^1.62.0",
+        "@typescript-eslint/eslint-plugin": "^5.1.0",
+        "@typescript-eslint/parser": "^5.1.0",
+        "@vscode/test-electron": "^1.6.2",
+        "eslint": "^8.1.0",
+        "glob": "^7.1.7",
+        "mocha": "^9.1.3",
+        "typescript": "^4.4.4"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "http-proxy-middleware": "^2.0.6"
+    }
+}
